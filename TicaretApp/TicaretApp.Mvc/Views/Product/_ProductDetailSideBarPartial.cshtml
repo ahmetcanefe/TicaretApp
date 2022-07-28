@@ -1,0 +1,45 @@
+﻿@model TicaretApp.Mvc.Models.ProductDetailSideBarViewModel
+
+<div class="col-md-12">
+    <div class="section-title">
+        <h3 class="title">@Model.Header</h3>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="products-tabs">
+            <!-- tab -->
+            <div id="tab2" class="tab-pane fade in active">
+                <div class="products-slick" data-nav="#slick-nav-2">
+
+                    @foreach (var product in Model.ProductListDto.Products)
+                    {
+                        <div>
+                            <div class="text-center product-item">
+                                <div class="product-item-top">
+                                    <img alt="" class="img-responsive" src="~/images/products/@product.ImageUrl">
+                                    <div class="mask"></div>
+                                    <ul class="list-unstyled list-inline">
+                                        <li><a asp-controller="Product" asp-action="Detail" asp-route-productId="@product.Id"><i class="fa fa-link fa-fw"></i></a></li>
+                                        <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                                            <input type="hidden" name="productId" value="@product.Id" />
+                                            <input type="hidden" name="quantity" value="1" />
+                                            <li><i class="fa fa-cart-plus fa-fw"></i></li>
+                                        </form>
+                                    </ul>
+                                </div>
+                                <div class="product-item-inner">
+                                    <h3 class="product-title"><a asp-controller="Product" asp-action="Detail" asp-route-productId="@product.Id">@product.Name</a></h3>
+                                    <p class="product-price">$@product.OldPrice</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

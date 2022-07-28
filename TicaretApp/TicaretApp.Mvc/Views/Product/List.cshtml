@@ -1,0 +1,103 @@
+﻿@model TicaretApp.Entity.Dtos.ProductListDto
+
+
+
+    <div id="breadcrumb" class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="breadcrumb-tree">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">All Categories</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li class="active">Headphones (227,490 Results)</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- ASIDE -->
+                @await Component.InvokeAsync("FilterMenu")
+               
+ 
+                <!-- /ASIDE -->
+                <!-- STORE -->
+                <div class="col-md-9">
+                    <!-- store top filter -->
+                    <div class="store-filter clearfix">
+                        <div class="store-sort">
+                            <label>
+                                Sort By:
+                                <select name="OrderBy" class="input-select">
+                                    <option value="0">Artan Fiyat</option>
+                                    <option value="1">Azalan Fiyat</option>
+                                    <option value="2">En Çok Görüntülenen</option>
+                                    <option value="3">En Az Görüntülenen</option>
+                                </select>
+                            </label>
+
+                            <label>
+                                Show:
+                                <select class="input-select">
+                                    <option value="0">20</option>
+                                    <option value="1">50</option>
+                                </select>
+                            </label>
+                        </div>
+                        <ul class="store-grid">
+                            <li class="active"><i class="fa fa-th"></i></li>
+                            <li><a href="#"><i class="fa fa-th-list"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- /store top filter -->
+                    <!-- store products -->
+                    <div class="row">
+                        @foreach (var product in Model.Products)
+                        {
+                             @await Html.PartialAsync("_productList",product);
+                        }
+                    </div>
+                    <!-- /store products -->
+                    <!-- store bottom filter -->
+                    <div class="store-filter clearfix">
+                        <span class="store-qty">Showing @Model.TotalCount Products</span>
+                        <ul class="store-pagination">
+                            @{
+                                @for (int i = 1; i <= Model.TotalPages; i++)
+                                {
+                            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                
+                                @if(Model.CategoryId == null)
+        {
+            <a asp-controller="Product" asp-action="List" asp-route-currentPage="@i">@i</a>
+        }
+        else
+        {
+            <a asp-controller="Product" asp-action="List" asp-route-categoryId="@Model.CategoryId.Value" asp-route-currentPage="@i">@i</a>
+        }
+                            </li>
+                                }
+                             }
+                        </ul>
+                    </div>
+                    <!-- /store bottom filter -->
+                </div>
+                <!-- /STORE -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+
+
+    

@@ -1,0 +1,21 @@
+﻿@model TicaretApp.Entity.Dtos.ProductListDto
+
+    <div class="widget">
+        <h4>FEATURED</h4>
+
+        <div class="products-list">
+            @foreach (var product in Model.Products)
+            {
+                <div class="media">
+                    <a class="media-left" href="#">
+                        <img alt="" class="img-responsive product-thumb" src="~/images/products/@product.ImageUrl">
+                    </a>
+                    <div class="media-body">
+                        <a asp-controller="Product" asp-action="Detail" asp-route-productId="@product.Id" class="product-title">@product.Name</a>
+                        <p class="product-price">$@product.OldPrice</p>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>

@@ -1,0 +1,115 @@
+﻿@model TicaretApp.Entity.Dtos.ProductListDto
+
+
+
+<div id="breadcrumb" class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb-tree">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">All Categories</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li class="active">Headphones (227,490 Results)</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- ASIDE -->
+            @await Component.InvokeAsync("FilterMenu")
+
+
+            <!-- /ASIDE -->
+            <!-- STORE -->
+            <div class="col-md-9">
+                <!-- store top filter -->
+                <div class="store-filter clearfix">
+                    <div class="store-sort">
+                        <label>
+                            Sort By:
+                            <select name="OrderBy" class="input-select">
+                                <option value="0">Artan Fiyat</option>
+                                <option value="1">Azalan Fiyat</option>
+                                <option value="2">En Çok Görüntülenen</option>
+                                <option value="3">En Az Görüntülenen</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Show:
+                            <select class="input-select">
+                                <option value="0">20</option>
+                                <option value="1">50</option>
+                            </select>
+                        </label>
+                    </div>
+                    <ul class="store-grid">
+                        <li class="active"><i class="fa fa-th"></i></li>
+                        <li><a href="#"><i class="fa fa-th-list"></i></a></li>
+                    </ul>
+                </div>
+                <!-- /store top filter -->
+                <!-- store products -->
+                <div class="row">
+
+                    @foreach (var product in Model.Products)
+                    {
+                        <!-- product -->
+                           @await Html.PartialAsync("_productList", product); 
+                        <!-- /product -->
+                    }
+
+                </div>
+                 
+                <div class="store-filter clearfix">
+                    <span class="store-qty">Showing @Model.TotalCount Products</span>
+                    <ul class="store-pagination">
+
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                        <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                            <form asp-controller="Product" asp-action="Filter" method="post">
+
+                                @foreach (var categoryId in Model.CategoryIds)
+                                {
+                        <input type="hidden" name="categoryIds" value="@categoryId" />}
+
+                                @foreach (var brandId in Model.BrandIds)
+                                {
+                        <input type="hidden" name="brandIds" value="@brandId" />}
+
+                                <input type="hidden" name="priceMin" value="@Model.priceMin" />
+                                <input type="hidden" name="priceMax" value="@Model.priceMax" />
+                                <input type="hidden" name="orderBy" value="@Model.orderBy" />
+                                <input type="hidden" name="currentPage" value="@i" />
+                                <button type="submit">@i</button>
+                            </form>
+                        </li>}
+
+                        }
+
+                    </ul>
+                </div>
+                <!-- /store bottom filter -->
+            </div>
+            <!-- /STORE -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+
+
+
+

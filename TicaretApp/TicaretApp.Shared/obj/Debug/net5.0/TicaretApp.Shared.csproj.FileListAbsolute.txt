@@ -1,0 +1,12 @@
+C:\MyProjects\TicaretApp\TicaretApp.Shared\bin\Debug\net5.0\TicaretApp.Shared.deps.json
+C:\MyProjects\TicaretApp\TicaretApp.Shared\bin\Debug\net5.0\TicaretApp.Shared.dll
+C:\MyProjects\TicaretApp\TicaretApp.Shared\bin\Debug\net5.0\TicaretApp.Shared.pdb
+C:\MyProjects\TicaretApp\TicaretApp.Shared\obj\Debug\net5.0\TicaretApp.Shared.csproj.AssemblyReference.cache
+C:\MyProjects\TicaretApp\TicaretApp.Shared\obj\Debug\net5.0\TicaretApp.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\MyProjects\TicaretApp\TicaretApp.Shared\obj\Debug\net5.0\TicaretApp.Shared.AssemblyInfoInputs.cache
+C:\MyProjects\TicaretApp\TicaretApp.Shared\obj\Debug\net5.0\TicaretApp.Shared.AssemblyInfo.cs
+C:\MyProjects\TicaretApp\TicaretApp.Shared\obj\Debug\net5.0\TicaretApp.Shared.csproj.CoreCompileInputs.cache
+C:\MyProjects\TicaretApp\TicaretApp.Shared\obj\Debug\net5.0\TicaretApp.Shared.dll
+C:\MyProjects\TicaretApp\TicaretApp.Shared\obj\Debug\net5.0\ref\TicaretApp.Shared.dll
+C:\MyProjects\TicaretApp\TicaretApp.Shared\obj\Debug\net5.0\TicaretApp.Shared.pdb
+C:\MyProjects\TicaretApp\TicaretApp.Shared\obj\Debug\net5.0\refint\TicaretApp.Shared.dll

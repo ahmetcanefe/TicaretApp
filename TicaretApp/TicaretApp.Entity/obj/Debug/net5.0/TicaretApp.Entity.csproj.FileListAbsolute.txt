@@ -1,0 +1,15 @@
+C:\MyProjects\TicaretApp\TicaretApp.Entity\bin\Debug\net5.0\TicaretApp.Entity.deps.json
+C:\MyProjects\TicaretApp\TicaretApp.Entity\bin\Debug\net5.0\TicaretApp.Entity.dll
+C:\MyProjects\TicaretApp\TicaretApp.Entity\bin\Debug\net5.0\TicaretApp.Entity.pdb
+C:\MyProjects\TicaretApp\TicaretApp.Entity\bin\Debug\net5.0\TicaretApp.Shared.dll
+C:\MyProjects\TicaretApp\TicaretApp.Entity\bin\Debug\net5.0\TicaretApp.Shared.pdb
+C:\MyProjects\TicaretApp\TicaretApp.Entity\obj\Debug\net5.0\TicaretApp.Entity.csproj.AssemblyReference.cache
+C:\MyProjects\TicaretApp\TicaretApp.Entity\obj\Debug\net5.0\TicaretApp.Entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\MyProjects\TicaretApp\TicaretApp.Entity\obj\Debug\net5.0\TicaretApp.Entity.AssemblyInfoInputs.cache
+C:\MyProjects\TicaretApp\TicaretApp.Entity\obj\Debug\net5.0\TicaretApp.Entity.AssemblyInfo.cs
+C:\MyProjects\TicaretApp\TicaretApp.Entity\obj\Debug\net5.0\TicaretApp.Entity.csproj.CoreCompileInputs.cache
+C:\MyProjects\TicaretApp\TicaretApp.Entity\obj\Debug\net5.0\TicaretApp.Entity.csproj.CopyComplete
+C:\MyProjects\TicaretApp\TicaretApp.Entity\obj\Debug\net5.0\TicaretApp.Entity.dll
+C:\MyProjects\TicaretApp\TicaretApp.Entity\obj\Debug\net5.0\ref\TicaretApp.Entity.dll
+C:\MyProjects\TicaretApp\TicaretApp.Entity\obj\Debug\net5.0\TicaretApp.Entity.pdb
+C:\MyProjects\TicaretApp\TicaretApp.Entity\obj\Debug\net5.0\refint\TicaretApp.Entity.dll

@@ -1,0 +1,46 @@
+﻿@model TicaretApp.Entity.Concrete.Product
+
+
+    <div class="col-md-4 col-xs-6">
+        <div class="product">
+            <div class="product-img">
+                <img src="~/img/@Model.ImageUrl" alt="@Model.Name">
+                <div class="product-label">
+                    @if (Model.ModifiedDate >= DateTime.Today.AddDays(-4))
+                    {
+                        <span class="new">NEW</span>}
+                </div>
+            </div>
+            <div class="product-body">
+
+
+                <h3 class="product-name"><a asp-controller="Product" asp-action="Detail" asp-route-productId="@Model.Id">@Model.Name</a></h3>
+                @if (Model.Discount != null)
+                {
+                    <h4 class="product-price">$@(Model.OldPrice* Model.Discount/100) <del class="product-old-price">$@Model.OldPrice</del></h4> }
+                else
+                {
+                    <h4 class="product-price">$@Model.OldPrice</h4>}
+
+                <div class="product-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <div class="product-btns">
+                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                </div>
+            </div>
+            <div class="add-to-cart">
+                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                    <input type="hidden" name="productId" value="@Model.Id"/>
+                    <input type="hidden" name="quantity" value="1" />
+                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                </form>
+            </div>
+        </div>
+    </div>

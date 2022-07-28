@@ -1,0 +1,73 @@
+﻿@model TicaretApp.Entity.Dtos.CategoryListDto
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Categories";
+}
+<ol class="breadcrumb mb-3 mt-2">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a></li>
+    <li class="breadcrumb-item active"><a asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a></li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Categories
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="articlesTable" width="100%" cellspacing="0">
+                <a class="btn btn-primary btn-sm btn-update" asp-area="Admin" asp-controller="Category" asp-action="Add"><span class="fas fa-product-hunt"> Add</span></a>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Aktif Mi?</th>
+                        <th>Silinmiş Mi?</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Aktif Mi?</th>
+                        <th>Silinmiş Mi?</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var category in Model.Categories)
+                    {
+                    <tr name="@category.Id">
+                        <td>@category.Id</td>
+                        <td>@category.Name</td>
+                        <td>@(category.IsActive ? "Evet" : "Hayır")</td>
+                        <td>@(category.IsDeleted ? "Evet" : "Hayır")</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm btn-update" asp-area="Admin" asp-controller="Category" asp-action="Update" asp-route-categoryId="@category.Id"><span class="fas fa-edit"></span></a>
+                            <form asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-categoryId="@category.Id" method="post">
+                                <button class="btn btn-danger btn-sm btn-delete"><span class="fas fa-minus-circle"></span></button>
+                            </form>
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script src="~/AdminLTE/js/articleIndex.js" type="application/ecmascript"></script>
+    <script>
+        $(document).ready(function() {
+            $('#btnAdd').click(function() {
+                window.location.href = '@Url.Action("Add","Article")';
+            });
+        });
+    </script>
+}
+@section Styles
+{
+
+}

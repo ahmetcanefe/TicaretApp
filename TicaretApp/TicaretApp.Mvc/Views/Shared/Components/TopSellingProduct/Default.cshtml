@@ -1,0 +1,97 @@
+﻿@model TicaretApp.Entity.Dtos.ProductListDto
+<div class="container">
+    <!-- row -->
+    <div class="row">
+
+        <!-- section title -->
+        <div class="col-md-12">
+            <div class="section-title">
+                <h3 class="title">Top selling</h3>
+                <div class="section-nav">
+                    <ul class="section-tab-nav tab-nav">
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <li><a asp-controller="Product" asp-action="List" asp-route-categoryId="@category.Id">@category.Name</a></li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /section title -->
+        <!-- Products tab & slick -->
+        <div class="col-md-12">
+            <div class="row">
+                <div class="products-tabs">
+                    <!-- tab -->
+                    <div id="tab2" class="tab-pane fade in active">
+                        <div class="products-slick" data-nav="#slick-nav-2">
+                            @foreach (var product in Model.Products)
+                            {
+                                <div class="product">
+                                    <div class="product-img">
+                                        <img src="~/img/@product.ImageUrl" alt="@product.Name">
+                                        <div class="product-label">
+                                            @if (product.Discount != null)
+                                            {
+                                                <span class="sale">-@product.Discount%</span>
+                                            }
+                                            @if (product.ModifiedDate != DateTime.Today.AddDays(-4))
+                                            {
+                                                <span class="new">NEW</span>
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <div class="product-body">
+                                        @foreach (var productCategory in product.ProductCategories)
+                                        {
+                                            <p class="product-category"><a asp-controller="Product" asp-action="List" asp-route-categoryId="@productCategory.CategoryId">@productCategory.Category.Name </a></p>
+                                        }
+
+                                        <h3 class="product-name"><a asp-controller="Product" asp-action="Detail" asp-route-productId="@product.Id">@product.Name</a></h3>
+                                        @if (product.Discount != null)
+                                        {
+                                            <h4 class="product-price">$@(product.OldPrice-(product.OldPrice*product.Discount/100)) <del class="product-old-price">$@product.OldPrice</del></h4>
+                                        }
+                                        else
+                                        {
+                                            <h4 class="product-price">$@product.OldPrice</h4>
+
+                                        }
+
+                                        <div class="product-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <div class="product-btns">
+                                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="add-to-cart">
+                                        <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                                            <input type="hidden" name="productId" value="@product.Id" />
+                                            <input type="hidden" name="quantity" value="1" />
+                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                        <div id="slick-nav-2" class="products-slick-nav"></div>
+                    </div>
+                    <!-- /tab -->
+                </div>
+            </div>
+        </div>
+        <!-- /Products tab & slick -->
+    </div>
+    <!-- /row -->
+</div>

@@ -1,0 +1,27 @@
+﻿@using TicaretApp.Shared.Results.ComplexTypes
+@model TicaretApp.Shared.Results.Concrete.DataResult<TicaretApp.Entity.Dtos.CategoryListDto>
+
+@if (Model.ResultStatus == ResultStatus.Success)
+{
+    @foreach (var category in Model.Data.Categories)
+    {
+        <div class="col-md-4 col-xs-6">
+            <div class="shop">
+                <div class="shop-img">
+                    <img src="~/img/@category.ImageUrl" alt="@category.Name">
+                </div>
+                <div class="shop-body">
+                    <h3>@category.Name<br>Collection</h3>
+                    <a asp-controller="Product" asp-action="List" asp-route-categoryId="@category.Id" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div>@Model.Message</div>
+
+}
+
+
